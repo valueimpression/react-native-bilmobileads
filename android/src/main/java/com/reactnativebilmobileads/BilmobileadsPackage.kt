@@ -7,11 +7,16 @@ import com.facebook.react.uimanager.ViewManager
 
 
 class BilmobileadsPackage : ReactPackage {
-    override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
-        return listOf(BilmobileadsModule(reactContext))
-    }
+  override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
+    return listOf(
+      RNBilPBMobileAds(reactContext),
+      RNBilAdInterstitial(reactContext),
+      RNBilAdRewarded(reactContext),
+      BilmobileadsModule(reactContext)
+    )
+  }
 
-    override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
-        return emptyList()
-    }
+  override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
+    return listOf(RNBilAdBanner(reactContext))
+  }
 }
